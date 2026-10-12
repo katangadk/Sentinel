@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Application
+Name=Sentinel
+Comment=Personal laptop security location client
+Exec=sentinel-agent diagnose
+Icon=security-high
+Terminal=true
+NoDisplay=true
+X-Geoclue-Reason=Share approximate laptop location with your own Sentinel dashboard

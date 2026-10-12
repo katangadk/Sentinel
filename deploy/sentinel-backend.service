@@ -1,0 +1,24 @@
+[Unit]
+Description=Sentinel API and Web Push worker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=sentinel
+Group=sentinel
+WorkingDirectory=/opt/sentinel
+EnvironmentFile=/etc/sentinel/backend.env
+Environment=PYTHONPATH=/opt/sentinel/backend
+ExecStart=/opt/sentinel/.venv/bin/uvicorn app.main:create_app --factory --host 127.0.0.1 --port 8000 --workers 1 --proxy-headers --forwarded-allow-ips=127.0.0.1 --no-access-log
+Restart=on-failure
+RestartSec=5
+UMask=0077
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/sentinel
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+
+[Install]
+WantedBy=multi-user.target

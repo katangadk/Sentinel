@@ -1,0 +1,7 @@
+# Optional: only if your GeoClue agent cannot authorize the sentinel desktop ID.
+# Add this stanza to /etc/geoclue/geoclue.conf after explicit owner consent.
+# Replace 1000 with `id -u` of the protected desktop user. NEVER leave users empty.
+[sentinel]
+allowed=true
+system=false
+users=1000
